@@ -13,3 +13,8 @@
 - [ ] Remove --packages=external from the build script.
 - [ ] Ensure server/index.ts has a default Worker fetch export.
 - [ ] Validate, commit, and push the fix to main.
+- [ ] Run the exact cat and grep commands against the current files.
+- [ ] Ensure package.json contains no packages=external flag.
+- [ ] Ensure server/index.ts contains export default with fetch.
+- [ ] Ensure wrangler.jsonc contains the required main and assets directory.
+- [ ] Re-run all verification commands, validate, and push the corrected state.
