@@ -88,7 +88,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--signal); outlin
 .site-nav--solid { position: fixed; top: 0; background: rgba(8, 11, 13, 0.88); backdrop-filter: blur(16px); }
 .site-nav__inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; max-width: 1280px; margin-inline: auto; padding: 0 32px; }
 .brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
-.brand-lockup__mark { width: 29px; height: 29px; object-fit: contain; }
+.brand-lockup__mark { width: 68px; height: 38px; padding: 2px; object-fit: contain; border-radius: 2px; background: #fff; }
 .brand-lockup__type { display: flex; align-items: baseline; gap: 1px; font: 13px/1 "IBM Plex Mono", monospace; letter-spacing: -0.04em; }
 .brand-lockup__type strong { color: var(--signal); font-weight: 500; }
 .brand-lockup__type span { color: #f1f6f1; }

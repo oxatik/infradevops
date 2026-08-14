@@ -26,7 +26,7 @@ const ASSETS = {
   module: "/manus-storage/infradevops-module-art_33fd964f.png",
   timeline: "/manus-storage/infradevops-timeline-art_52de877e.png",
   avatar: "/manus-storage/infradevops-avatar_7884d1a7.png",
-  logo: "/manus-storage/infradevops-logo_c3c5604e.png",
+  logo: "/manus-storage/infradevops-ci-logo_65ebf927.jpg",
 };
 
 const roles = ["Blockchain DevOps", "Node Operator", "Testnet Hunter", "Infrastructure Engineer"];
