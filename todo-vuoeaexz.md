@@ -18,3 +18,6 @@
 - [ ] Ensure server/index.ts contains export default with fetch.
 - [ ] Ensure wrangler.jsonc contains the required main and assets directory.
 - [ ] Re-run all verification commands, validate, and push the corrected state.
+- [ ] Read pasted_content_2.txt and identify its requested changes.
+- [ ] Apply the second attachment’s requested project changes.
+- [ ] Validate and publish the updated project version.
