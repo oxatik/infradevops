@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
   Activity,
   ArrowDownRight,
@@ -8,10 +8,12 @@ import {
   Code2,
   ExternalLink,
   Github,
+  Mail,
   Menu,
   Radio,
   Server,
   ShieldCheck,
+  Send,
   Sparkles,
   Terminal,
   Workflow,
@@ -85,6 +87,7 @@ function Home() {
   const [typedRole, setTypedRole] = useState(roles[0]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isNavSolid, setIsNavSolid] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   useReveal();
 
   useEffect(() => {
@@ -111,6 +114,12 @@ function Home() {
 
   const currentDate = useMemo(() => new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(new Date()), []);
   const closeMenu = () => setMenuOpen(false);
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const subject = contactForm.name ? `Protocol inquiry from ${contactForm.name}` : "Protocol inquiry";
+    const body = `Name: ${contactForm.name}\nEmail: ${contactForm.email}\n\nMessage:\n${contactForm.message}`;
+    window.location.href = `mailto:hello@infradevops.xyz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <div className="site-shell">
@@ -119,22 +128,23 @@ function Home() {
       <div className="top-telemetry" aria-label="System status"><div className="top-telemetry__inner"><span className="top-telemetry__signal"><span /> SYS.ONLINE</span><span className="top-telemetry__message">Blockchain infrastructure / field notes from the edge</span><span className="top-telemetry__date">{currentDate} <span>/</span> UTC+6</span></div></div>
 
       <header className={`site-nav ${isNavSolid ? "site-nav--solid" : ""}`}><div className="site-nav__inner">
-        <a href="#top" className="brand-lockup" onClick={closeMenu} aria-label="infradevops.xyz home"><img src={ASSETS.logo} alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>infra</strong><span>devops.xyz</span></span></a>
+        <a href="#top" className="brand-lockup" onClick={closeMenu} aria-label="infradevops.xyz home"><span className="brand-lockup__monogram" aria-hidden="true">ID</span><span className="brand-lockup__type"><strong>infra</strong><span>devops.xyz</span></span></a>
         <nav className={`desktop-nav ${menuOpen ? "desktop-nav--open" : ""}`} aria-label="Primary navigation">
           {navItems.map((item, index) => <a key={item.href} href={item.href} onClick={closeMenu}><span>0{index + 1}</span>{item.label}</a>)}
+          <a className="nav-social" href="https://x.com/ATIKURR420" target="_blank" rel="noreferrer" onClick={closeMenu}><span aria-hidden="true">𝕏</span> X / Twitter <ExternalLink size={13} /></a>
           <a className="nav-contact" href="mailto:hello@infradevops.xyz" onClick={closeMenu}>Open a channel <ArrowUpRight size={14} /></a>
         </nav>
         <button className="menu-toggle" type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation" : "Open navigation"}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button>
       </div></header>
 
-      <aside className="section-rail" aria-label="Field note section index"><span className="section-rail__title">FIELD<br />NOTE</span><span className="section-rail__line" /><nav className="section-rail__links"><a href="#top" aria-label="Go to introduction">00</a><a href="#about" aria-label="Go to about">01</a><a href="#services" aria-label="Go to capabilities">02</a><a href="#journey" aria-label="Go to journey">03</a><a href="#projects" aria-label="Go to nodes">04</a><a href="#top" aria-label="Go to contact">05</a></nav><span className="section-rail__year">26 / SYS</span></aside>
+      <aside className="section-rail" aria-label="Field note section index"><span className="section-rail__title">FIELD<br />NOTE</span><span className="section-rail__line" /><nav className="section-rail__links"><a href="#top" aria-label="Go to introduction">00</a><a href="#about" aria-label="Go to about">01</a><a href="#services" aria-label="Go to capabilities">02</a><a href="#journey" aria-label="Go to journey">03</a><a href="#projects" aria-label="Go to nodes">04</a><a href="#contact" aria-label="Go to contact">05</a></nav><span className="section-rail__year">26 / SYS</span></aside>
 
       <main id="main-content">
         <section id="top" className="hero-section" aria-labelledby="hero-title">
           <div className="hero-section__backdrop" style={{ backgroundImage: `url(${ASSETS.hero})` }} aria-hidden="true" /><div className="hero-section__grid" aria-hidden="true" />
           <div className="container hero-layout">
             <div className="hero-copy" data-reveal="up"><div className="eyebrow eyebrow--signal"><span className="eyebrow__dot" /> AVAILABLE FOR PROTOCOL WORK <span className="eyebrow__slash">//</span> 2026</div><h1 id="hero-title">Hello, I&apos;m<br /><span className="hero-title__signal">INFRA</span><br /><span className="hero-title__outline">DEVOPS</span></h1><div className="hero-role"><span className="hero-role__prompt">&gt;_</span><span>{typedRole}</span><span className="typing-caret" aria-hidden="true" /></div><p className="hero-intro">I build, test, and operate blockchain infrastructure at scale. When a protocol needs a node in the wild, I&apos;m usually already looking at the logs.</p><div className="hero-actions"><a className="button button--primary" href="#projects">View my nodes <ArrowDownRight size={16} /></a><a className="button button--text" href="https://github.com/oxatik" target="_blank" rel="noreferrer">github.com/oxatik <ExternalLink size={14} /></a></div><div className="hero-footnote"><span>Scroll to inspect</span><span className="hero-footnote__line" /><span>01 — 06</span></div></div>
-            <div className="hero-console" data-reveal="left" style={{ transitionDelay: "160ms" }}><div className="console-card"><div className="console-card__topbar"><span className="window-lights"><i /><i /><i /></span><span>node-monitor / live</span><span className="console-card__topbar-right">v2.06</span></div><div className="console-card__identity"><div className="avatar-frame"><img src={ASSETS.avatar} alt="Geometric ID avatar" /><span className="avatar-frame__scan" /></div><div><p className="console-kicker">OPERATOR PROFILE</p><h2>O. XATIK</h2><p className="console-muted">Blockchain infrastructure / Dhaka</p></div></div><div className="console-stats"><div><span>UPTIME</span><strong>99.98<span>%</span></strong></div><div><span>NETWORKS</span><strong>04</strong></div><div><span>MODE</span><strong>24/7</strong></div></div><div className="console-log"><div><span className="log-time">00:00:01</span><span className="log-ok">OK</span><span>miden-node handshake</span></div><div><span className="log-time">00:00:02</span><span className="log-ok">OK</span><span>faucet rate limits verified</span></div><div><span className="log-time">00:00:03</span><span className="log-warn">••</span><span>watching for edge cases</span></div></div><div className="console-footer"><StatusPill label="ALL SYSTEMS NOMINAL" /><span>last ping 14ms</span></div></div><div className="hero-console__float hero-console__float--top"><Radio size={14} /><span>signal found</span></div><div className="hero-console__float hero-console__float--bottom"><Activity size={14} /><span>observability first</span></div><div className="hero-signature"><img src={ASSETS.logo} alt="" /><span>ID / MARK<br /><strong>INFRA / DEVOPS</strong></span></div></div>
+            <div className="hero-console" data-reveal="left" style={{ transitionDelay: "160ms" }}><div className="console-card"><div className="console-card__topbar"><span className="window-lights"><i /><i /><i /></span><span>node-monitor / live</span><span className="console-card__topbar-right">v2.06</span></div><div className="console-card__identity"><div className="avatar-frame"><img src={ASSETS.avatar} alt="Geometric ID avatar" /><span className="avatar-frame__scan" /></div><div><p className="console-kicker">OPERATOR PROFILE</p><h2>O. XATIK</h2><p className="console-muted">Blockchain infrastructure / Dhaka</p></div></div><div className="console-stats"><div><span>UPTIME</span><strong>99.98<span>%</span></strong></div><div><span>NETWORKS</span><strong>04</strong></div><div><span>MODE</span><strong>24/7</strong></div></div><div className="console-log"><div><span className="log-time">00:00:01</span><span className="log-ok">OK</span><span>miden-node handshake</span></div><div><span className="log-time">00:00:02</span><span className="log-ok">OK</span><span>faucet rate limits verified</span></div><div><span className="log-time">00:00:03</span><span className="log-warn">••</span><span>watching for edge cases</span></div></div><div className="console-footer"><StatusPill label="ALL SYSTEMS NOMINAL" /><span>last ping 14ms</span></div></div><div className="hero-console__float hero-console__float--top"><Radio size={14} /><span>signal found</span></div><div className="hero-console__float hero-console__float--bottom"><Activity size={14} /><span>observability first</span></div><div className="hero-signature"><span className="hero-signature__monogram" aria-hidden="true">ID</span><span>ID / MARK<br /><strong>INFRA / DEVOPS</strong></span></div></div>
           </div>
           <div className="hero-scroll"><ChevronDown size={15} /><span>01 / HELLO</span></div>
         </section>
@@ -151,10 +161,10 @@ function Home() {
 
         <section className="section principles-section"><div className="container principles-layout"><div data-reveal="up"><SectionLabel index="05">Operating principles</SectionLabel><h2>The work is technical.<br /><em>The standard is human.</em></h2><p className="section-lead">No anonymous praise wall here. Just the rules I bring to every protocol, every bug report, and every node that has to stay alive through the night.</p></div><div className="principles-card" data-reveal="left" style={{ transitionDelay: "120ms" }}><div className="principles-card__top"><Terminal size={17} /><span>operator-notes.md</span><span>read-only</span></div><ol><li><span>01</span><div><strong>Reproduce before you report.</strong><p>A useful issue leaves a trail another engineer can follow.</p></div><Check size={17} /></li><li><span>02</span><div><strong>Observe the system, not just the command.</strong><p>Logs, metrics, and failure modes tell the real story.</p></div><Check size={17} /></li><li><span>03</span><div><strong>Document the next person&apos;s first hour.</strong><p>Good infrastructure work compounds when it is easy to inherit.</p></div><Check size={17} /></li></ol><div className="principles-card__footer"><span><Sparkles size={14} /> A real endorsement belongs to a real source.</span><span>01—03 / DONE</span></div></div></div></section>
 
-        <section className="contact-section"><div className="contact-section__grid" aria-hidden="true" /><div className="container contact-layout" data-reveal="up"><div><p className="section-kicker">Open a channel</p><h2>Have a protocol<br /><span>worth stress-testing?</span></h2></div><a className="button button--primary button--large" href="mailto:hello@infradevops.xyz">hello@infradevops.xyz <ArrowUpRight size={17} /></a></div></section>
+        <section id="contact" className="contact-section"><div className="contact-section__grid" aria-hidden="true" /><div className="container contact-layout" data-reveal="up"><div className="contact-copy"><p className="section-kicker">Open a channel</p><h2>Have a protocol<br /><span>worth stress-testing?</span></h2><p className="contact-copy__intro">Send the brief, the bug, or the node spec. This form opens your email client with the details ready to send.</p><div className="contact-copy__links"><a href="mailto:hello@infradevops.xyz"><Mail size={14} /> hello@infradevops.xyz</a><a href="https://x.com/ATIKURR420" target="_blank" rel="noreferrer"><span className="contact-copy__x" aria-hidden="true">𝕏</span> @ATIKURR420 <ExternalLink size={13} /></a></div></div><form className="contact-form" onSubmit={handleContactSubmit}><div className="contact-form__top"><span><span className="contact-form__status" /> MESSAGE RELAY</span><span>LOCAL MAIL CLIENT</span></div><div className="contact-form__fields"><label htmlFor="contact-name">Name<input id="contact-name" name="name" type="text" placeholder="Your name" autoComplete="name" value={contactForm.name} onChange={(event) => setContactForm((current) => ({ ...current, name: event.target.value }))} required /></label><label htmlFor="contact-email">Email<input id="contact-email" name="email" type="email" placeholder="you@company.com" autoComplete="email" value={contactForm.email} onChange={(event) => setContactForm((current) => ({ ...current, email: event.target.value }))} required /></label></div><label htmlFor="contact-message">Message<textarea id="contact-message" name="message" placeholder="Tell me what you are building or testing..." rows={5} value={contactForm.message} onChange={(event) => setContactForm((current) => ({ ...current, message: event.target.value }))} required /></label><div className="contact-form__footer"><span>Encrypted by your own email provider.</span><button className="button button--primary" type="submit">Compose email <Send size={15} /></button></div></form></div></section>
       </main>
 
-      <footer className="site-footer"><div className="container site-footer__top"><a href="#top" className="brand-lockup"><img src={ASSETS.logo} alt="" className="brand-lockup__mark" /><span className="brand-lockup__type"><strong>infra</strong><span>devops.xyz</span></span></a><p>This site runs on Cloudflare Pages.<br />My nodes run on bare metal.</p><div className="footer-links"><a href="https://github.com/oxatik" target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a><a href="#top"><Code2 size={15} /> Back to top</a></div></div><div className="container site-footer__bottom"><span>© 2026 infradevops.xyz / Built by a Node Operator</span><span>All systems nominal <i /></span></div></footer>
+      <footer className="site-footer"><div className="container site-footer__top"><a href="#top" className="brand-lockup"><span className="brand-lockup__monogram" aria-hidden="true">ID</span><span className="brand-lockup__type"><strong>infra</strong><span>devops.xyz</span></span></a><p>This site runs on Cloudflare Pages.<br />My nodes run on bare metal.</p><div className="footer-links"><a href="https://github.com/oxatik" target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a><a href="https://x.com/ATIKURR420" target="_blank" rel="noreferrer"><span className="footer-links__x" aria-hidden="true">𝕏</span> X / Twitter</a><a href="#top"><Code2 size={15} /> Back to top</a></div></div><div className="container site-footer__bottom"><span>© 2026 infradevops.xyz / Built by a Node Operator</span><span>All systems nominal <i /></span></div></footer>
     </div>
   );
 }
