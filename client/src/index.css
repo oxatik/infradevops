@@ -208,3 +208,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--signal); outlin
   .service-card { min-height: 300px; }
   .principles-layout { gap: 6%; }
 }
+
+/* OPERATIONS CYCLE section — devops-loop diagram */
+.devops-loop-section { margin: 4rem 0; padding: 2rem; text-align: center; }
+.devops-loop-section .section-label { font-family: 'Courier New', monospace; font-size: 0.75rem; color: #22c55e; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
+.devops-loop-img { max-width: 100%; width: 600px; height: auto; border: 1px solid #22c55e33; border-radius: 4px; opacity: 0.9; }
