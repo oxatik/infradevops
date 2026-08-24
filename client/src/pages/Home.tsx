@@ -128,7 +128,7 @@ function Home() {
       <div className="top-telemetry" aria-label="System status"><div className="top-telemetry__inner"><span className="top-telemetry__signal"><span /> SYS.ONLINE</span><span className="top-telemetry__message">Blockchain infrastructure / field notes from the edge</span><span className="top-telemetry__date">{currentDate} <span>/</span> UTC+6</span></div></div>
 
       <header className={`site-nav ${isNavSolid ? "site-nav--solid" : ""}`}><div className="site-nav__inner">
-        <a href="#top" className="brand-lockup" onClick={closeMenu} aria-label="infradevops.xyz home"><span className="brand-lockup__monogram"><img src="assets/infra-logo.svg" alt="" style={{ height: "1em", verticalAlign: "-0.125em", width: "auto", display: "inline-block" }} /></span></a>
+        <a href="#top" className="brand-lockup" onClick={closeMenu} aria-label="Infra DevOps home"><span className="brand-lockup__monogram"><img className="brand-lockup__logo" src="/assets/company-logo.png" alt="Infra DevOps" /></span></a>
         <nav className={`desktop-nav ${menuOpen ? "desktop-nav--open" : ""}`} aria-label="Primary navigation">
           {navItems.map((item, index) => <a key={item.href} href={item.href} onClick={closeMenu}><span>0{index + 1}</span>{item.label}</a>)}
           <a className="nav-social" href="https://x.com/ATIKURR420" target="_blank" rel="noreferrer" onClick={closeMenu}><span aria-hidden="true">𝕏</span> X / Twitter <ExternalLink size={13} /></a>

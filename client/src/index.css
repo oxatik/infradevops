@@ -88,9 +88,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--signal); outlin
 .site-nav--solid { position: fixed; top: 0; background: rgba(8, 11, 13, 0.88); backdrop-filter: blur(16px); }
 .site-nav__inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; max-width: 1280px; margin-inline: auto; padding: 0 32px; }
 .brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
-.brand-lockup__monogram { position: relative; width: 68px; height: 38px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(184,255,85,0.56); color: var(--signal); background: #0d1711; font: 15px/1 "IBM Plex Mono", monospace; letter-spacing: -0.12em; box-shadow: inset 0 0 0 3px rgba(184,255,85,0.04), 0 0 18px rgba(184,255,85,0.06); }
+.brand-lockup__monogram { position: relative; width: 68px; height: 38px; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(184,255,85,0.56); background: #0d1711; box-shadow: inset 0 0 0 3px rgba(184,255,85,0.04), 0 0 18px rgba(184,255,85,0.06); }
 .brand-lockup__monogram::before { content: ""; position: absolute; top: -1px; left: -1px; width: 18px; height: 1px; background: var(--signal); }
 .brand-lockup__monogram::after { content: ""; position: absolute; right: -1px; bottom: -1px; width: 18px; height: 1px; background: var(--signal); }
+.brand-lockup__logo { display: block; width: 30px; height: 30px; object-fit: contain; }
 .brand-lockup__type { display: flex; align-items: baseline; gap: 1px; font: 13px/1 "IBM Plex Mono", monospace; letter-spacing: -0.04em; }
 .brand-lockup__type strong { color: var(--signal); font-weight: 500; }
 .brand-lockup__type span { color: #f1f6f1; }
