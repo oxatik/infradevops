@@ -29,6 +29,7 @@ const ASSETS = {
   timeline: "/manus-storage/infradevops-timeline-art_52de877e.png",
   avatar: "/manus-storage/infradevops-avatar_7884d1a7.png",
   logo: "/manus-storage/infradevops-ci-logo_65ebf927.jpg",
+  workstation: "/assets/devops-workstation.jpg",
 };
 
 const roles = ["Blockchain DevOps", "Node Operator", "Testnet Hunter", "Infrastructure Engineer"];
@@ -149,7 +150,63 @@ function Home() {
           <div className="hero-scroll"><ChevronDown size={15} /><span>01 / HELLO</span></div>
         </section>
 
-        <section id="operations-cycle" className="devops-loop-section" data-reveal="up"><span className="section-label">OPERATIONS CYCLE</span><img src="/assets/devops-loop.png" alt="DevOps Lifecycle" className="devops-loop-img" /></section>
+        <section id="operations-cycle" className="section workstation-section" data-reveal="up">
+          <div className="container">
+            <div className="section-header section-header--split" data-reveal="up">
+              <div>
+                <SectionLabel index="00">Command Station</SectionLabel>
+                <h2>Operations Cycle &amp;<br /><em>Live Infrastructure.</em></h2>
+              </div>
+              <p>Where blockchain infrastructure code meets physical iron. Multi-monitor telemetry, dedicated node racks, and automated CI/CD pipelines.</p>
+            </div>
+
+            <div className="workstation-card" data-reveal="up" style={{ transitionDelay: "120ms" }}>
+              <div className="workstation-card__topbar">
+                <div className="workstation-card__signals">
+                  <span className="window-lights"><i /><i /><i /></span>
+                  <span className="workstation-card__tag">STATION: 0X-DHAKA // RACK-01</span>
+                </div>
+                <div className="workstation-card__telemetry">
+                  <StatusPill label="SYS.ONLINE" tone="live" />
+                  <span className="workstation-card__metric"><Activity size={13} /> CI/CD: 98% SUCCESS</span>
+                  <span className="workstation-card__metric"><Server size={13} /> 24/7 NODES</span>
+                </div>
+              </div>
+
+              <div className="workstation-card__media">
+                <img
+                  src={ASSETS.workstation}
+                  alt="DevOps Operations Command Station and CI/CD Infrastructure"
+                  className="workstation-card__img"
+                  loading="lazy"
+                />
+                <div className="workstation-card__overlay">
+                  <div className="workstation-card__pipeline">
+                    <span className="pipeline-step">CODE</span>
+                    <span className="pipeline-arrow">→</span>
+                    <span className="pipeline-step">BUILD</span>
+                    <span className="pipeline-arrow">→</span>
+                    <span className="pipeline-step">TEST</span>
+                    <span className="pipeline-arrow">→</span>
+                    <span className="pipeline-step">DEPLOY</span>
+                    <span className="pipeline-arrow">→</span>
+                    <span className="pipeline-step">MONITOR</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="workstation-card__footer">
+                <div className="workstation-card__command">
+                  <Terminal size={14} />
+                  <code>$ journalctl -u miden-node --since &quot;1h ago&quot; | grep -E &quot;HANDSHAKE|DEPLOY&quot;</code>
+                </div>
+                <div className="workstation-card__tagline">
+                  <span>INFRASTRUCTURE AUTOMATION // SCALABILITY // RELIABILITY</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <div className="signal-marquee" aria-hidden="true"><div className="signal-marquee__track"><span>NODE OPERATIONS</span><i /> <span>SECURITY TESTING</span><i /> <span>DEVOPS AUTOMATION</span><i /> <span>OPEN SOURCE</span><i /> <span>NODE OPERATIONS</span><i /> <span>SECURITY TESTING</span><i /> <span>DEVOPS AUTOMATION</span><i /></div></div>
 

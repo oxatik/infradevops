@@ -210,7 +210,172 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--signal); outlin
   .principles-layout { gap: 6%; }
 }
 
-/* OPERATIONS CYCLE section — devops-loop diagram */
-.devops-loop-section { margin: 4rem 0; padding: 2rem; text-align: center; }
-.devops-loop-section .section-label { font-family: 'Courier New', monospace; font-size: 0.75rem; color: #22c55e; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
-.devops-loop-img { max-width: 100%; width: 600px; height: auto; border: 1px solid #22c55e33; border-radius: 4px; opacity: 0.9; }
+/* WORKSTATION & OPERATIONS CYCLE SHOWCASE */
+.workstation-section {
+  padding: 80px 0 60px;
+  position: relative;
+  background: #080c0b;
+}
+
+.workstation-card {
+  margin-top: 48px;
+  border: 1px solid rgba(189, 255, 213, 0.16);
+  background: rgba(12, 20, 17, 0.85);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(184, 255, 85, 0.04);
+  transition: border-color 200ms ease, transform 200ms var(--ease-out), box-shadow 200ms ease;
+  overflow: hidden;
+}
+
+.workstation-card:hover {
+  border-color: rgba(184, 255, 85, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(184, 255, 85, 0.08);
+}
+
+.workstation-card__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-bottom: 1px solid rgba(189, 255, 213, 0.12);
+  background: rgba(8, 14, 12, 0.95);
+  font: 11px/1 "IBM Plex Mono", monospace;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.workstation-card__signals {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.workstation-card__tag {
+  color: #71877a;
+  letter-spacing: 0.1em;
+}
+
+.workstation-card__telemetry {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.workstation-card__metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--signal);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.workstation-card__media {
+  position: relative;
+  width: 100%;
+  max-height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #030505;
+}
+
+.workstation-card__img {
+  width: 100%;
+  height: auto;
+  max-height: 640px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  transition: transform 300ms var(--ease-out);
+}
+
+.workstation-card:hover .workstation-card__img {
+  transform: scale(1.012);
+}
+
+.workstation-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 10, 8, 0.85) 60%, rgba(6, 10, 8, 0.98) 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.workstation-card__pipeline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(10, 18, 14, 0.88);
+  border: 1px solid rgba(184, 255, 85, 0.28);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+}
+
+.pipeline-step {
+  font: 11px/1 "IBM Plex Mono", monospace;
+  font-weight: 600;
+  color: #ebf6eb;
+  letter-spacing: 0.12em;
+}
+
+.pipeline-arrow {
+  color: var(--signal);
+  font-size: 11px;
+}
+
+.workstation-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 22px;
+  border-top: 1px solid rgba(189, 255, 213, 0.12);
+  background: rgba(8, 14, 12, 0.95);
+  font: 11px/1 "IBM Plex Mono", monospace;
+}
+
+.workstation-card__command {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #84988d;
+}
+
+.workstation-card__command code {
+  color: #c7dec9;
+  font-family: inherit;
+}
+
+.workstation-card__tagline {
+  color: #5e7965;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+@media (max-width: 768px) {
+  .workstation-section {
+    padding: 40px 0;
+  }
+  .workstation-card__media {
+    max-height: 420px;
+  }
+  .workstation-card__telemetry span:not(:first-child) {
+    display: none;
+  }
+  .workstation-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pipeline-step {
+    font-size: 9px;
+  }
+}
